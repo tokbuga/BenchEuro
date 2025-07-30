@@ -53,16 +53,22 @@ buffer.writeUInt16BE(CONSTANT, 0); //write key to buffer
 
 example test case:
 ```js
-case "array[buffer.readUInt16BE()]":
-    while (j--) {
-        t0 = performance.now();
-        i = m;
-        while (i--) {
-            array[ buffer.readUInt16BE(0) ]( buffer );
-        };
-        t1 = performance.now();
-        r.tAvg += t1-t0;
-    }
-    r.tAvg /= c;
-break;
+switch ( test ) {
+    ...
+
+    case "array[buffer.readUInt16BE()]":
+        while (j--) {
+            t0 = performance.now();
+            i = m;
+            while (i--) {
+                array[ buffer.readUInt16BE(0) ]( buffer );
+            };
+            t1 = performance.now();
+            r.tAvg += t1-t0;
+        }
+        r.tAvg /= c;
+    break;
+
+    ...
+}
 ```
