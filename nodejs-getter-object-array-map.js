@@ -1,11 +1,9 @@
-function handle_arp ( pkt ) {
-}
+function handle_arp () {}
 
 const object = new Object;
 const map = new Map;
 const array = new Array;
 const hascheck_set = new Set;
-
 
 object[ 0x0806 ] = handle_arp;
 array[ 0x0806 ] = handle_arp;
