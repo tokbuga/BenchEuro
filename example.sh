@@ -1,0 +1,1 @@
+node nodejs-getter-object-array-map.js
