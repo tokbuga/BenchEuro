@@ -48,3 +48,19 @@ buffer.writeUInt16BE(CONSTANT, 0); //write key to buffer
 <img src="nodejs-getter-object-array-map.png" width="100%">
 
 ***if/else - switch is NOT fastest way to find routing way (if you are using Buffer instead of ArrayBuffer .d)***
+
+example test case:
+```js
+case "array[buffer.readUInt16BE()]":
+    while (j--) {
+        t0 = performance.now();
+        i = m;
+        while (i--) {
+            array[ buffer.readUInt16BE(0) ]( buffer );
+        };
+        t1 = performance.now();
+        r.tAvg += t1-t0;
+    }
+    r.tAvg /= c;
+break;
+```
