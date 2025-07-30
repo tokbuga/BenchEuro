@@ -52,7 +52,9 @@ const rs = [
     { name : "Reflect.apply(Array.prototype.at)", tAvg:0 },
     { name : "Reflect.apply(Map.prototype.at)", tAvg:0 },
     { name : "if (buffer.readUInt16BE() === CONSTANT) {}", tAvg:0 },
+    { name : "if (view.getUint16() === CONSTANT) {}", tAvg:0 },
     { name : "switch (buffer.readUInt16BE()) { case CONSTANT: }", tAvg:0 },
+    { name : "switch (view.getUint16()) { case CONSTANT: }", tAvg:0 },
 ].map(r => {
     r.tAvg = 0;
     r.count = c;
@@ -244,12 +246,46 @@ const rs = [
             r.tAvg /= c;
         break;
 
+
+        case "if (view.getUint16() === CONSTANT) {}":
+            while (j--) {
+                t0 = performance.now();
+                i = m;
+                while (i--) {
+                    if (view.getUint16(0) === CONSTANT) {
+                        handle_arp( buffer );
+                    }
+                }
+                t1 = performance.now();
+                r.tAvg += t1-t0;
+            }
+            r.tAvg /= c;
+        break;
+
         case "switch (buffer.readUInt16BE()) { case CONSTANT: }":
             while (j--) {
                 t0 = performance.now();
                 i = m;
                 while (i--) {
                     switch (buffer.readUInt16BE(0)) {
+                        case CONSTANT:
+                            handle_arp( buffer );
+                        break;
+                    }
+                }
+                t1 = performance.now();
+                r.tAvg += t1-t0;
+            }
+            r.tAvg /= c;
+        break;
+
+        
+        case "switch (view.getUint16()) { case CONSTANT: }":
+            while (j--) {
+                t0 = performance.now();
+                i = m;
+                while (i--) {
+                    switch (view.getUint16(0)) {
                         case CONSTANT:
                             handle_arp( buffer );
                         break;
