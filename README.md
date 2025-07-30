@@ -7,11 +7,11 @@ Hotpath: read u16 value from buffer and call a function from resource which hold
 * key -> unsigned short (Uint16)
 * value -> function
 
-```nodejs
+```shell
 node nodejs-getter-object-array-map.js
 ```
 Code and objects used in this test:
-```nodejs
+```js
 function handle_arp () {}
 
 const object = new Object;
