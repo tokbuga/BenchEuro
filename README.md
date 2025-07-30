@@ -12,7 +12,12 @@ node nodejs-getter-object-array-map.js
 ```
 Code and objects used in this test:
 ```js
-function handle_arp () {} //match with
+function handle_arp ( buffer ) {
+    if ( buffer.readUInt16BE(0) !== CONSTANT ) {
+        throw "error";
+    }
+} //match with
+
 function handle_eth () {} //maybe other
 function unhandle   () {} //no match
 
@@ -20,9 +25,9 @@ const object        = new Object;
 const map           = new Map;
 const array         = new Array;
 
-array[ 0x0806 ]     = handle_arp; 
-object[ 0x0806 ]    = handle_arp;
-map.set( 0x0806,    handle_arp );
+object[ CONSTANT ]    = handle_arp;
+array[ CONSTANT ]     = handle_arp;
+map.set( CONSTANT,      handle_arp);
 
 let 
     i, m = 1e6,    //time measure range length
@@ -35,14 +40,7 @@ let
 const buffer    = Buffer.alloc( 4096 );
 const view      = new DataView( buffer.buffer );
 
-buffer.writeUInt16BE(0x0806, 0); //write key to buffer
-
-let Map_prototype_get   = Map.prototype.get;
-let Array_prototype_at  = Array.prototype.at;
-let map_get_bind        = map.get.bind(map);
-let array_at_bind       = array.at.bind(array);
-let view_bind           = view.getUint16.bind(view);
-let view_bind_offset    = view.getUint16.bind(view, 0);
+buffer.writeUInt16BE(CONSTANT, 0); //write key to buffer
 ```
 
 ### Winner: map.get(view.getUint16.bind(view))
