@@ -46,4 +46,4 @@ buffer.writeUInt16BE(CONSTANT, 0); //write key to buffer
 ### Winner: map.get(view.getUint16.bind(view))
 <img src="nodejs-getter-object-array-map.png" width="100%">
 
-**if/else - switch is NOT fastest way to find routing way (if you are using Buffer instead of ArrayBuffer .d)**
+***if/else - switch is NOT fastest way to find routing way (if you are using Buffer instead of ArrayBuffer .d)***
