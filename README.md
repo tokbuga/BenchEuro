@@ -26,9 +26,9 @@ const object        = new Object;
 const map           = new Map;
 const array         = new Array;
 
-object[ CONSTANT ]    = handle_arp;
-array[ CONSTANT ]     = handle_arp;
-map.set( CONSTANT,      handle_arp);
+object[ CONSTANT ]  = handle_arp;
+array[ CONSTANT ]   = handle_arp;
+map.set( CONSTANT,    handle_arp);
 
 let 
     i, m = 1e6,    //time measure range length
