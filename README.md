@@ -11,5 +11,5 @@ Hotpath: read u16 value from buffer and call a function from resource which hold
 node nodejs-getter-object-array-map.js
 ```
 
-Winner: map.get(view.getUint16.bind(view))
+### Winner: map.get(view.getUint16.bind(view))
 <img src="nodejs-getter-object-array-map.png" width="100%">
