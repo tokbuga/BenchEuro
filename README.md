@@ -1,5 +1,7 @@
 # BenchEuro
 Some benchmark results for consciousness..
+### ✅ USE new DataView( Buffer.buffer ).get..
+### 🚫 NOT USE Buffer().read...
 
 # Finding HotPath
 ## Getting a function as value from Object / Array / Map
